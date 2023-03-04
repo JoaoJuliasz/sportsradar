@@ -2,7 +2,7 @@ import React from 'react';
 import { Games } from '../../types/types';
 
 type Props = {
-    games: Games
+    games: Games[]
 }
 
 const Summary = ({ games }: Props) => {

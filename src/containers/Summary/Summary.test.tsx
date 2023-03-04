@@ -10,12 +10,12 @@ describe('Summary', () => {
             {
                 home: 'Mexico',
                 away: 'Canada',
-                scores: [0, 5]
+                score: [0, 5]
             },
             {
                 home: 'Spain',
                 away: 'Brazil',
-                scores: [10, 2]
+                score: [10, 2]
             },
         ]
 
