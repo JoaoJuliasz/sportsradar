@@ -13,7 +13,7 @@ const SummaryItem = ({ game, index, selectGame }: Props) => {
     return (
         <div data-testid="game-container"
             onClick={() => { selectGame(index) }}
-            style={{ display: 'flex', maxWidth: '250px', flexDirection: 'column', margin: '7px' }}>
+            style={{ display: 'flex', maxWidth: '250px', flexDirection: 'column', margin: '7px', cursor: 'pointer' }}>
             <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-evenly' }}>
                 <h5 style={{ margin: '0' }}>{game.home}</h5>
                 <span>x</span>

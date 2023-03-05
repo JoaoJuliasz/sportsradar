@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MainProvider } from '../../context/Context';
 import { Games } from '../../types/types';
+import GameDetails from '../GameDetails/GameDetails';
 import GameRegister from '../GameResgiter/GameRegister';
 import Summary from '../Summary/Summary';
 
@@ -19,6 +20,7 @@ const Main = () => {
             <div>
                 <GameRegister addNewGame={addNewGame} />
                 <Summary games={games} />
+                <GameDetails selectedGame={selectedGame} />
             </div>
         </MainProvider>
     );
