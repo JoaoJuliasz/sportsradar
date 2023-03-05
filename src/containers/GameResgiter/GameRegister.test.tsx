@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import GameRegister from './GameRegister'
 
@@ -28,8 +28,10 @@ describe('GamesRegister', () => {
         const addBtn = screen.getByRole('button', { name: /new game/i })
         await user.click(addBtn)
         const createGameBtn = screen.getByRole('button', { name: /add game/i })
+        const teamsInputs = screen.getAllByRole('textbox')
+        fireEvent.change(teamsInputs[0], {target: {value: 'Spain'}})
+        fireEvent.change(teamsInputs[1], {target: {value: 'Brazil'}})
         await user.click(createGameBtn)
         expect(addNewGame).toBeCalled()
     })
-
 })

@@ -33,9 +33,11 @@ const GameRegister = ({ addNewGame }: Props) => {
     }
 
     const handleAddGame = () => {
-        addNewGame(gameToAdd)
-        setShowGameRegister(false)
-        setGameToAdd(initialState)
+        if (gameToAdd.home && gameToAdd.away) {
+            addNewGame(gameToAdd)
+            setShowGameRegister(false)
+            setGameToAdd(initialState)
+        }
     }
 
     return (
