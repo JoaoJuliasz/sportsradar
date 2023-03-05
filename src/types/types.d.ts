@@ -6,9 +6,11 @@ export type Games = {
     score: number[]
 }
 
+export type SelectedGame = { game: Games, index: number }
 
 export type MainContextProps = {
     games: Games[]
-    selectedGame: Games
-    setSelectedGame: React.Dispatch<React.SetStateAction<Games>>
+    setGames: React.Dispatch<React.SetStateAction<Games[]>>
+    selectedGame: SelectedGame
+    setSelectedGame: React.Dispatch<React.SetStateAction<SelectedGame>>
 }

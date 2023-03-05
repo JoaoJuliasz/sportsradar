@@ -13,7 +13,7 @@ const Summary = ({ games }: Props) => {
 
     const selectGame = useCallback((index: number) => {
         const game = games[index]
-        context?.setSelectedGame(game)
+        context?.setSelectedGame({ game, index })
     }, [games])
 
     return (
