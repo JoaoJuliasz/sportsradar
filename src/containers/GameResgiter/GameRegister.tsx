@@ -5,13 +5,16 @@ type Props = {
     addNewGame: (game: Games) => void
 }
 
+const initialState = {
+    home: '',
+    away: '',
+    score: [0, 0]
+}
+
+
 const GameRegister = ({ addNewGame }: Props) => {
     const [showGameRegister, setShowGameRegister] = useState<boolean>(false)
-    const [gameToAdd, setGameToAdd] = useState({
-        home: '',
-        away: '',
-        score: [0, 0]
-    } as Games)
+    const [gameToAdd, setGameToAdd] = useState(initialState as Games)
 
     const showGameResgiter = () => {
         setShowGameRegister(true)
@@ -23,6 +26,12 @@ const GameRegister = ({ addNewGame }: Props) => {
         setGameToAdd({ ...gameToAdd, [name]: value })
     }
 
+    const handleAddGame = () => {
+        addNewGame(gameToAdd)
+        setShowGameRegister(false)
+        setGameToAdd(initialState)
+    }
+
     return (
         <div>
             <div>
@@ -30,7 +39,7 @@ const GameRegister = ({ addNewGame }: Props) => {
             </div>
             {showGameRegister ?
                 <div>
-                    <h1>Add new game teams</h1>
+                    <h1>Add New Game Teams</h1>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                         <div style={{ margin: '0 5px ' }}>
                             <label htmlFor="home">Home team</label>
@@ -40,7 +49,7 @@ const GameRegister = ({ addNewGame }: Props) => {
                             <label htmlFor="away">Away team</label>
                             <input onChange={setTeamName} value={gameToAdd.away} type="text" name="away" />
                         </div>
-                        <button onClick={() => addNewGame(gameToAdd)} style={{ margin: '0 5px ' }}>Add game</button>
+                        <button onClick={handleAddGame} style={{ margin: '0 5px ' }}>Add game</button>
                     </div>
                 </div>
                 : null}

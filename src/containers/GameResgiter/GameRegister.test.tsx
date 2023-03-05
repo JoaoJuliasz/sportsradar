@@ -7,7 +7,7 @@ describe('GamesRegister', () => {
     test('should render correctly', () => {
         const addNewGame = jest.fn()
         render(<GameRegister addNewGame={addNewGame} />)
-        const addBtn = screen.getByRole('button', { name: 'New Game' })
+        const addBtn = screen.getByRole('button', { name: /new game/i })
         expect(addBtn).toBeInTheDocument()
     })
 
@@ -15,7 +15,7 @@ describe('GamesRegister', () => {
         user.setup()
         const addNewGame = jest.fn()
         render(<GameRegister addNewGame={addNewGame} />)
-        const addBtn = screen.getByRole('button', { name: 'New Game' })
+        const addBtn = screen.getByRole('button', { name: /new game/i })
         await user.click(addBtn)
         const gameRegisterTitle = screen.getByText(/add new game teams/i)
         const teamsInputs = screen.getAllByRole('textbox')
@@ -27,11 +27,10 @@ describe('GamesRegister', () => {
         user.setup()
         const addNewGame = jest.fn()
         render(<GameRegister addNewGame={addNewGame} />)
-        const addBtn = screen.getByRole('button', { name: 'New Game' })
+        const addBtn = screen.getByRole('button', { name: /new game/i })
         await user.click(addBtn)
-        const createGameBtn = screen.getByRole('button', { name: /Add Game/i })
+        const createGameBtn = screen.getByRole('button', { name: /add game/i })
         await user.click(createGameBtn)
-        expect(createGameBtn).toBeInTheDocument()
         expect(addNewGame).toBeCalled()
     })
 

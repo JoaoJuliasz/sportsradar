@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
+import SummaryItem from '../../components/SummaryItem/SummaryItem';
+import { MainContext } from '../../context/Context';
 import { Games } from '../../types/types';
 
 type Props = {
@@ -6,25 +8,26 @@ type Props = {
 }
 
 const Summary = ({ games }: Props) => {
+
+    const context = useContext(MainContext)
+
+    const selectGame = useCallback((index: number) => {
+        const game = games[index]
+        context?.setSelectedGame(game)
+    }, [games])
+
     return (
-        <div>
-            <div>
-                <h4>Home</h4>
-                <h4>Away</h4>
+        <div style={{ margin: '15px' }}>
+            <div style={{ display: 'flex', maxWidth: '250px', justifyContent: 'space-evenly', margin: '15px 0' }}>
+                <h2 style={{ margin: '0' }}>Home</h2>
+                <h2 style={{ margin: '0' }}>Away</h2>
             </div>
 
             <div>
-                <ul>
-                    {games.map(game => (
+                <ul style={{ listStyleType: 'none', padding: '0' }}>
+                    {games.map((game, index) => (
                         <li key={game.home + game.away}>
-                            <div>
-                                <h6>
-                                    {game.home}
-                                </h6>
-                                <h6>
-                                    {game.away}
-                                </h6>
-                            </div>
+                            <SummaryItem selectGame={selectGame} index={index} game={game} />
                         </li>
                     ))}
                 </ul>
