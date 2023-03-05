@@ -17,9 +17,7 @@ describe('GamesRegister', () => {
         render(<GameRegister addNewGame={addNewGame} />)
         const addBtn = screen.getByRole('button', { name: /new game/i })
         await user.click(addBtn)
-        const gameRegisterTitle = screen.getByText(/add new game teams/i)
         const teamsInputs = screen.getAllByRole('textbox')
-        expect(gameRegisterTitle).toBeInTheDocument()
         expect(teamsInputs.length).toBe(2)
     })
 

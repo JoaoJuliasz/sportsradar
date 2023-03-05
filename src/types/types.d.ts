@@ -3,7 +3,8 @@ import React from "react"
 export type Games = {
     home: string,
     away: string,
-    score: number[]
+    score: number[],
+    additionOrder?: number
 }
 
 export type SelectedGame = { game: Games, index: number }

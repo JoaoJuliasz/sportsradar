@@ -19,8 +19,10 @@ const Main = () => {
         <MainProvider value={{ games, setGames, selectedGame, setSelectedGame }}>
             <div>
                 <GameRegister addNewGame={addNewGame} />
-                <Summary games={games} />
-                <GameDetails selectedGame={selectedGame} />
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: '100%' }}>
+                    <Summary games={games} />
+                    <GameDetails selectedGame={selectedGame} />
+                </div>
             </div>
         </MainProvider>
     );

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import { MainContext } from '../../context/Context';
 import { Games } from '../../types/types';
 
@@ -9,7 +9,6 @@ type Props = {
 }
 
 const SummaryItem = ({ game, index, selectGame }: Props) => {
-
     return (
         <div data-testid="game-container"
             onClick={() => { selectGame(index) }}
@@ -26,4 +25,4 @@ const SummaryItem = ({ game, index, selectGame }: Props) => {
     );
 };
 
-export default SummaryItem;
+export default memo(SummaryItem);

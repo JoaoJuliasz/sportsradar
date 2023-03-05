@@ -9,7 +9,8 @@ describe('SummaryItem', () => {
         const game = {
             home: 'Mexico',
             away: 'Canada',
-            score: [0, 5]
+            score: [0, 5],
+            additionOrder: 0
         }
         render(<SummaryItem game={game} index={0} selectGame={selectGame} />)
         const teamsNames = screen.getAllByRole('heading')
@@ -22,7 +23,8 @@ describe('SummaryItem', () => {
         const game = {
             home: 'Mexico',
             away: 'Canada',
-            score: [0, 5]
+            score: [0, 5],
+            additionOrder: 0
         }
         render(<SummaryItem game={game} index={0} selectGame={selectGame} />)
         const gameContainer = screen.getByTestId('game-container')

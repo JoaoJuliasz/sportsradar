@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { MainContext } from '../../context/Context';
 import { Games } from '../../types/types';
 
 type Props = {
@@ -14,10 +15,15 @@ const initialState = {
 
 const GameRegister = ({ addNewGame }: Props) => {
     const [showGameRegister, setShowGameRegister] = useState<boolean>(false)
-    const [gameToAdd, setGameToAdd] = useState(initialState as Games)
+    const [gameToAdd, setGameToAdd] = useState({} as Games)
+
+    const context = useContext(MainContext)
 
     const showGameResgiter = () => {
         setShowGameRegister(true)
+        const length = context?.games.length!
+        const game = { ...initialState, additionOrder: length }
+        setGameToAdd(game)
     }
 
     const setTeamName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,13 +39,12 @@ const GameRegister = ({ addNewGame }: Props) => {
     }
 
     return (
-        <div>
+        <div style={{ display: 'flex', justifyContent: 'center', margin: '10px' }}>
             <div>
                 <button onClick={() => showGameResgiter()}>New Game</button>
             </div>
             {showGameRegister ?
                 <div>
-                    <h1>Add New Game Teams</h1>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                         <div style={{ margin: '0 5px ' }}>
                             <label htmlFor="home">Home team</label>

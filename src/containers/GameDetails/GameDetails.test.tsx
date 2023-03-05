@@ -10,7 +10,8 @@ describe('GameDetails', () => {
             game: {
                 home: 'Mexico',
                 away: 'Canada',
-                score: [0, 5]
+                score: [0, 5],
+                additionOrder: 0
             },
             index: 0
         }
@@ -26,7 +27,8 @@ describe('GameDetails', () => {
             game: {
                 home: 'Mexico',
                 away: 'Canada',
-                score: [0, 5]
+                score: [0, 5],
+                additionOrder: 0
             },
             index: 0
         }
@@ -44,7 +46,8 @@ describe('GameDetails', () => {
             game: {
                 home: 'Mexico',
                 away: 'Canada',
-                score: [0, 5]
+                score: [0, 5],
+                additionOrder: 0
             },
             index: 0
         }

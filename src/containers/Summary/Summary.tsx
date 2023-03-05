@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { memo, useCallback, useContext, useMemo } from 'react';
 import SummaryItem from '../../components/SummaryItem/SummaryItem';
 import { MainContext } from '../../context/Context';
 import { Games } from '../../types/types';
@@ -16,16 +16,29 @@ const Summary = ({ games }: Props) => {
         context?.setSelectedGame({ game, index })
     }, [games])
 
+    const sortedGames = useMemo(() => {
+        return games.sort((a, b) => {
+            const teamA = a.score[0] + a.score[1]
+            const teamB = b.score[0] + b.score[1]
+            if (teamA > teamB) return -1
+            if (teamA < teamB) return 1
+            if (teamA === teamB) {
+                return b.additionOrder! - a.additionOrder!
+            }
+            return 0
+        })
+    }, [games])
+
     return (
         <div style={{ margin: '15px' }}>
             <div style={{ display: 'flex', maxWidth: '250px', justifyContent: 'space-evenly', margin: '15px 0' }}>
-                <h2 style={{ margin: '0' }}>Home</h2>
-                <h2 style={{ margin: '0' }}>Away</h2>
+                <h3 style={{ margin: '0' }}>Home</h3>
+                <h3 style={{ margin: '0' }}>Away</h3>
             </div>
 
             <div>
                 <ul style={{ listStyleType: 'none', padding: '0' }}>
-                    {games.map((game, index) => (
+                    {sortedGames.map((game, index) => (
                         <li key={game.home + game.away}>
                             <SummaryItem selectGame={selectGame} index={index} game={game} />
                         </li>
@@ -36,4 +49,4 @@ const Summary = ({ games }: Props) => {
     );
 };
 
-export default Summary;
+export default memo(Summary);
