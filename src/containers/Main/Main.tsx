@@ -5,6 +5,8 @@ import GameDetails from '../GameDetails/GameDetails';
 import GameRegister from '../GameResgiter/GameRegister';
 import Summary from '../Summary/Summary';
 
+import './main.styles.css'
+
 const Main = () => {
 
     const [games, setGames] = useState<Games[]>([])
@@ -17,9 +19,9 @@ const Main = () => {
 
     return (
         <MainProvider value={{ games, setGames, selectedGame, setSelectedGame }}>
-            <div>
+            <div className="main-container">
                 <GameRegister addNewGame={addNewGame} />
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: '100%' }}>
+                <div className="games-container">
                     <Summary games={games} />
                     <GameDetails selectedGame={selectedGame} />
                 </div>

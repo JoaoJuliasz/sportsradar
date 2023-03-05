@@ -43,7 +43,7 @@ const GameRegister = ({ addNewGame }: Props) => {
     return (
         <div style={{ display: 'flex', justifyContent: 'center', margin: '10px' }}>
             <div>
-                <button onClick={() => showGameResgiter()}>New Game</button>
+                <a style={{ cursor: 'pointer', color: '#4e7dd1' }} onClick={() => showGameResgiter()}>New Game</a>
             </div>
             {showGameRegister ?
                 <div>
@@ -56,7 +56,7 @@ const GameRegister = ({ addNewGame }: Props) => {
                             <label htmlFor="away">Away team</label>
                             <input onChange={setTeamName} value={gameToAdd.away} type="text" name="away" />
                         </div>
-                        <button onClick={handleAddGame} style={{ margin: '0 5px ' }}>Add game</button>
+                        <a style={{ cursor: 'pointer', color: '#4e7dd1', margin: '0 5px ' }} onClick={handleAddGame}>Add game</a>
                     </div>
                 </div>
                 : null}

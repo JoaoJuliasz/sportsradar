@@ -45,12 +45,17 @@ const GameDetails = ({ selectedGame }: Props) => {
         setShowUpdate(false)
     }
 
+    const closeGameDetails = () => {
+        context?.setSelectedGame({} as SelectedGame)
+    }
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', margin: '15px' }}>
             {selectedGame.game?.home ?
                 <>
-                    <div style={{margin: '15px 0px'}}>
+                    <div style={{ margin: '15px 0px' }}>
                         <h3 style={{ margin: '0' }}>Game Details</h3>
+                        <a style={{ cursor: 'pointer', color: '#4e7dd1', fontSize: '14px' }} onClick={closeGameDetails}>close</a>
                     </div>
                     <div>
                         <div>
@@ -72,13 +77,13 @@ const GameDetails = ({ selectedGame }: Props) => {
                         <div>
                             {!showUpdate ?
                                 <>
-                                    <button onClick={finishGame}>Finish</button>
-                                    <button onClick={toggleShowUpdate}>Update</button>
+                                    <a style={{ cursor: 'pointer', color: '#4e7dd1', fontSize: '14px', margin: '7px' }} onClick={finishGame}>Finish</a>
+                                    <a style={{ cursor: 'pointer', color: '#4e7dd1', fontSize: '14px', margin: '7px' }} onClick={toggleShowUpdate}>Update</a>
                                 </>
                                 :
                                 <>
-                                    <button onClick={handleCancelBtn}>Cancel</button>
-                                    <button onClick={handleSaveBtn}>Save</button>
+                                    <a style={{ cursor: 'pointer', color: '#4e7dd1', fontSize: '14px', margin: '7px' }} onClick={handleCancelBtn}>Cancel</a>
+                                    <a style={{ cursor: 'pointer', color: '#4e7dd1', fontSize: '14px', margin: '7px' }} onClick={handleSaveBtn}>Save</a>
                                 </>
                             }
                         </div>

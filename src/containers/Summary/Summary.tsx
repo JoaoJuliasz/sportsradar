@@ -1,4 +1,5 @@
-import React, { memo, useCallback, useContext, useMemo } from 'react';
+import React, { memo, useCallback, useContext, useMemo, useState } from 'react';
+import SummaryInfos from '../../components/SummaryInfos/SummaryInfos';
 import SummaryItem from '../../components/SummaryItem/SummaryItem';
 import { MainContext } from '../../context/Context';
 import { Games } from '../../types/types';
@@ -9,6 +10,8 @@ type Props = {
 
 const Summary = ({ games }: Props) => {
 
+    const [showSummary, setshowSummary] = useState<boolean>(false)
+
     const context = useContext(MainContext)
 
     const selectGame = useCallback((index: number) => {
@@ -16,35 +19,31 @@ const Summary = ({ games }: Props) => {
         context?.setSelectedGame({ game, index })
     }, [games])
 
-    const sortedGames = useMemo(() => {
-        return games.sort((a, b) => {
-            const teamA = a.score[0] + a.score[1]
-            const teamB = b.score[0] + b.score[1]
-            if (teamA > teamB) return -1
-            if (teamA < teamB) return 1
-            if (teamA === teamB) {
-                return b.additionOrder! - a.additionOrder!
-            }
-            return 0
-        })
-    }, [games])
+    const getSummary = () => {
+        setshowSummary(!showSummary)
+    }
+
 
     return (
         <div style={{ margin: '15px' }}>
-            <div style={{ display: 'flex', maxWidth: '250px', justifyContent: 'space-evenly', margin: '15px 0' }}>
+            <div style={{ display: 'flex', maxWidth: '250px', justifyContent: 'space-evenly', margin: '15px 0', alignItems: 'center' }}>
                 <h3 style={{ margin: '0' }}>Home</h3>
                 <h3 style={{ margin: '0' }}>Away</h3>
+                {games.length > 0 ? <a style={{ cursor: 'pointer', color: '#4e7dd1' }} onClick={getSummary}>{!showSummary ? 'Show' : 'Hide'} Summary</a> : null}
             </div>
 
             <div>
                 <ul style={{ listStyleType: 'none', padding: '0' }}>
-                    {sortedGames.map((game, index) => (
+                    {games.map((game, index) => (
                         <li key={game.home + game.away}>
                             <SummaryItem selectGame={selectGame} index={index} game={game} />
                         </li>
                     ))}
                 </ul>
             </div>
+
+            {showSummary ?
+                <SummaryInfos games={games} /> : null}
         </div>
     );
 };

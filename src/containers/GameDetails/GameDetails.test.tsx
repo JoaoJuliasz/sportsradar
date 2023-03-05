@@ -34,9 +34,9 @@ describe('GameDetails', () => {
         }
 
         render(<GameDetails selectedGame={selectedGame} />)
-        const updateBtn = screen.getByRole('button', { name: /update/i })
+        const updateBtn = screen.getByText(/update/i)
         await user.click(updateBtn)
-        const saveBtn = screen.getByRole('button', { name: /save/i })
+        const saveBtn = screen.getByText(/save/i)
         expect(saveBtn).toBeInTheDocument()
     })
 
@@ -53,7 +53,7 @@ describe('GameDetails', () => {
         }
 
         render(<GameDetails selectedGame={selectedGame} />)
-        const updateBtn = screen.getByRole('button', { name: /update/i })
+        const updateBtn = screen.getByText(/update/i)
         await user.click(updateBtn)
         const scoresInput = screen.getAllByRole('spinbutton')
         expect(scoresInput[0]).toHaveValue(0)

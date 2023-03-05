@@ -11,17 +11,15 @@ type Props = {
 const SummaryItem = ({ game, index, selectGame }: Props) => {
     return (
         <div data-testid="game-container"
-            onClick={() => { selectGame(index) }}
-            style={{ display: 'flex', maxWidth: '250px', flexDirection: 'column', margin: '7px', cursor: 'pointer' }}>
+
+            style={{ display: 'flex', maxWidth: '250px', margin: '15px 7px', cursor: 'pointer' }}>
             <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-evenly' }}>
-                <h5 style={{ margin: '0' }}>{game.home}</h5>
+                <h4 style={{ margin: '0' }}>{game.home}</h4>
                 <span>x</span>
-                <h5 style={{ margin: '0' }}>{game.away}</h5>
+                <h4 style={{ margin: '0' }}>{game.away}</h4>
             </div>
-            <div style={{ width: '100%' }}>
-                <p>{game.score.join(' x ')}</p>
-            </div>
-        </div>
+            <a onClick={() => { selectGame(index) }} style={{ cursor: 'pointer', color: '#4e7dd1', fontSize: '14px' }}>actions</a>
+        </div >
     );
 };
 

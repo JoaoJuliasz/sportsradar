@@ -27,8 +27,8 @@ describe('SummaryItem', () => {
             additionOrder: 0
         }
         render(<SummaryItem game={game} index={0} selectGame={selectGame} />)
-        const gameContainer = screen.getByTestId('game-container')
-        await user.click(gameContainer)
+        const actionBtn = screen.getByText(/actions/i)
+        await user.click(actionBtn)
         expect(selectGame).toBeCalled()
     })
 
