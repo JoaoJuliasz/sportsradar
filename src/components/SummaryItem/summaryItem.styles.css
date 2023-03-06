@@ -1,0 +1,17 @@
+.summary-item-container {
+    display: flex;
+    max-width: 250px;
+    margin: 15px 7px;
+    align-items: center;
+}
+
+.summary-item-container .titles-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.summary-item-container .titles-container h4{
+    margin: 0
+}

@@ -1,24 +1,29 @@
-import React, { memo, useContext } from 'react';
-import { MainContext } from '../../context/Context';
-import { Games } from '../../types/types';
+import { memo } from 'react';
+import { Game } from '../../types/types';
+import ActionButton from '../ActionButton/ActionButton';
+
+import './summaryItem.styles.css'
 
 type Props = {
-    game: Games
+    game: Game
     index: number
     selectGame: (gameIndex: number) => void
 }
 
 const SummaryItem = ({ game, index, selectGame }: Props) => {
-    return (
-        <div data-testid="game-container"
 
-            style={{ display: 'flex', maxWidth: '250px', margin: '15px 7px', cursor: 'pointer' }}>
-            <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-evenly' }}>
-                <h4 style={{ margin: '0' }}>{game.home}</h4>
+    const handleClick = () => {
+        selectGame(index)
+    }
+
+    return (
+        <div data-testid="game-container" className="summary-item-container">
+            <div className="titles-container">
+                <h4>{game.home}</h4>
                 <span>x</span>
-                <h4 style={{ margin: '0' }}>{game.away}</h4>
+                <h4>{game.away}</h4>
             </div>
-            <a onClick={() => { selectGame(index) }} style={{ cursor: 'pointer', color: '#4e7dd1', fontSize: '14px' }}>actions</a>
+            <ActionButton clickFunction={handleClick} text="actions" />
         </div >
     );
 };

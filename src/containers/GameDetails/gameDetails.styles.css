@@ -1,0 +1,41 @@
+.game-details-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin: 15px;
+}
+
+.game-details-container .title-container {
+    margin: 15px 0;
+}
+
+.game-details-container .game-details {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.game-details-container .game-details h5{
+    margin: 0;
+}
+
+.game-details-container .game-values-container {
+    width: 100%
+}
+
+.game-details-container .game-values-container input {
+    max-width: 50px;
+    outline: none;
+    border: none;
+
+}
+
+.game-details-container .game-values-container .border {
+    border: 1px solid #ccc
+}
+
+.game-details-container .buttons-container a {
+    margin: 7px;
+}

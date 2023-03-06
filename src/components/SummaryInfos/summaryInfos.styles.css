@@ -1,0 +1,11 @@
+.summary-infos-container {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin: 15px;
+}
+
+.summary-infos-container .list-item {
+    list-style-type: none;
+    padding: 0;
+}

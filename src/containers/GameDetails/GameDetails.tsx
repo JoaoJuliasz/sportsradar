@@ -1,6 +1,10 @@
 import { memo, useContext, useMemo, useState } from "react";
+import ActionButton from "../../components/ActionButton/ActionButton";
+import Heading from "../../components/Heading/Heading";
 import { MainContext } from "../../context/Context";
-import { Games, SelectedGame } from "../../types/types";
+import { SelectedGame } from "../../types/types";
+
+import './gameDetails.styles.css'
 
 type Props = {
     selectedGame: SelectedGame
@@ -50,40 +54,40 @@ const GameDetails = ({ selectedGame }: Props) => {
     }
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', margin: '15px' }}>
+        <div className="game-details-container">
             {selectedGame.game?.home ?
                 <>
-                    <div style={{ margin: '15px 0px' }}>
-                        <h3 style={{ margin: '0' }}>Game Details</h3>
-                        <a style={{ cursor: 'pointer', color: '#4e7dd1', fontSize: '14px' }} onClick={closeGameDetails}>close</a>
+                    <div className="title-container">
+                        <Heading text="Game Details"/>
+                        <ActionButton clickFunction={closeGameDetails} text="close" />
                     </div>
                     <div>
                         <div>
-                            <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-evenly' }}>
-                                <h5 style={{ margin: '0' }}>{selectedGame.game.home}</h5>
+                            <div className="game-details">
+                                <h5>{selectedGame.game.home}</h5>
                                 <span>x</span>
-                                <h5 style={{ margin: '0' }}>{selectedGame.game.away}</h5>
+                                <h5>{selectedGame.game.away}</h5>
                             </div>
-                            <div style={{ width: '100%' }}>
+                            <div className="game-values-container">
                                 {selectedGame.game.score.map((score, index) => (
                                     <input key={index} type="number"
                                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChangeScore(parseInt(e.target.value), index)}
                                         min="0"
-                                        style={{ maxWidth: '50px', outline: 'none', border: showUpdate ? '1px solid #ccc' : 'none' }}
+                                        className={showUpdate ? 'border' : ''}
                                         readOnly={!showUpdate} value={score} />
                                 ))}
                             </div>
                         </div>
-                        <div>
+                        <div className="buttons-container">
                             {!showUpdate ?
                                 <>
-                                    <a style={{ cursor: 'pointer', color: '#4e7dd1', fontSize: '14px', margin: '7px' }} onClick={finishGame}>Finish</a>
-                                    <a style={{ cursor: 'pointer', color: '#4e7dd1', fontSize: '14px', margin: '7px' }} onClick={toggleShowUpdate}>Update</a>
+                                    <ActionButton clickFunction={finishGame} text="Finish" />
+                                    <ActionButton clickFunction={toggleShowUpdate} text="Update" />
                                 </>
                                 :
                                 <>
-                                    <a style={{ cursor: 'pointer', color: '#4e7dd1', fontSize: '14px', margin: '7px' }} onClick={handleCancelBtn}>Cancel</a>
-                                    <a style={{ cursor: 'pointer', color: '#4e7dd1', fontSize: '14px', margin: '7px' }} onClick={handleSaveBtn}>Save</a>
+                                    <ActionButton clickFunction={handleCancelBtn} text="Cancel" />
+                                    <ActionButton clickFunction={handleSaveBtn} text="Save" />
                                 </>
                             }
                         </div>

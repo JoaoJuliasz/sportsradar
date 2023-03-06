@@ -1,0 +1,16 @@
+.summary-container {
+    margin: 15px;
+}
+
+.summary-container .titles-container {
+    display: flex;
+    max-width: 250px;
+    justify-content: space-evenly;
+    margin: 15px 0px;
+    align-items: center;
+}
+
+.summary-container .list-container {
+    list-style-type: none;
+    padding: 0;
+}

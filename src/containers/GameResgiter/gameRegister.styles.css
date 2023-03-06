@@ -1,0 +1,15 @@
+.games-register-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.games-register-container .values-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.games-register-container .values-container .input-container {
+    margin: 0 5px
+}

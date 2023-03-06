@@ -1,11 +1,15 @@
 import React, { memo, useCallback, useContext, useMemo, useState } from 'react';
+import ActionButton from '../../components/ActionButton/ActionButton';
+import Heading from '../../components/Heading/Heading';
 import SummaryInfos from '../../components/SummaryInfos/SummaryInfos';
 import SummaryItem from '../../components/SummaryItem/SummaryItem';
 import { MainContext } from '../../context/Context';
-import { Games } from '../../types/types';
+import { Game } from '../../types/types';
+
+import './summary.styles.css'
 
 type Props = {
-    games: Games[]
+    games: Game[]
 }
 
 const Summary = ({ games }: Props) => {
@@ -25,15 +29,15 @@ const Summary = ({ games }: Props) => {
 
 
     return (
-        <div style={{ margin: '15px' }}>
-            <div style={{ display: 'flex', maxWidth: '250px', justifyContent: 'space-evenly', margin: '15px 0', alignItems: 'center' }}>
-                <h3 style={{ margin: '0' }}>Home</h3>
-                <h3 style={{ margin: '0' }}>Away</h3>
-                {games.length > 0 ? <a style={{ cursor: 'pointer', color: '#4e7dd1' }} onClick={getSummary}>{!showSummary ? 'Show' : 'Hide'} Summary</a> : null}
+        <div className="summary-container">
+            <div className="titles-container">
+                <Heading text="Home" />
+                <Heading text="Away" />
+                {games.length > 0 ? <ActionButton clickFunction={getSummary} text={(!showSummary ? 'Show' : 'Hide') + ' Summary'} /> : null}
             </div>
 
             <div>
-                <ul style={{ listStyleType: 'none', padding: '0' }}>
+                <ul className="list-container">
                     {games.map((game, index) => (
                         <li key={game.home + game.away}>
                             <SummaryItem selectGame={selectGame} index={index} game={game} />
@@ -42,9 +46,11 @@ const Summary = ({ games }: Props) => {
                 </ul>
             </div>
 
-            {showSummary ?
-                <SummaryInfos games={games} /> : null}
-        </div>
+            {
+                showSummary ?
+                    <SummaryInfos games={games} /> : null
+            }
+        </div >
     );
 };
 
