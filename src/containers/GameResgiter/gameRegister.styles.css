@@ -13,3 +13,9 @@
 .games-register-container .values-container .input-container {
     margin: 0 5px
 }
+
+.games-register-container .values-container .input-container input {
+    outline: none;
+    border: 1px solid #ccc;
+    margin-left: 5  px;
+}

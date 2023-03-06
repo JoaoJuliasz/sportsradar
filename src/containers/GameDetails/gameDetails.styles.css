@@ -29,7 +29,7 @@
     max-width: 50px;
     outline: none;
     border: none;
-
+    margin: 0 2px;
 }
 
 .game-details-container .game-values-container .border {
