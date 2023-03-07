@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import Summary from './Summary'
 
-
 describe('Summary', () => {
 
     test('should render correctly', () => {

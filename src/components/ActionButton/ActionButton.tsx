@@ -7,7 +7,7 @@ type Props = {
 
 const ActionButton = ({ text, clickFunction }: Props) => {
     return (
-        <a onClick={() => { clickFunction() }} className="action-btn">{text}</a>
+        <a onClick={clickFunction} className="action-btn">{text}</a>
     );
 };
 

@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useContext, useMemo, useState } from 'react';
+import React, { memo, useCallback, useContext, useState } from 'react';
 import ActionButton from '../../components/ActionButton/ActionButton';
 import Heading from '../../components/Heading/Heading';
 import SummaryInfos from '../../components/SummaryInfos/SummaryInfos';
@@ -21,7 +21,7 @@ const Summary = ({ games }: Props) => {
     const selectGame = useCallback((index: number) => {
         const game = games[index]
         context?.setSelectedGame({ game, index })
-    }, [games])
+    }, [games, context])
 
     const getSummary = () => {
         setshowSummary(!showSummary)
@@ -35,20 +35,19 @@ const Summary = ({ games }: Props) => {
                 <Heading text="Away" />
                 {games.length > 0 ? <ActionButton clickFunction={getSummary} text={(!showSummary ? 'Show' : 'Hide') + ' Summary'} /> : null}
             </div>
-
-            <div>
-                <ul className="list-container">
-                    {games.map((game, index) => (
-                        <li key={game.home + game.away}>
-                            <SummaryItem selectGame={selectGame} index={index} game={game} />
-                        </li>
-                    ))}
-                </ul>
-            </div>
-
             {
-                showSummary ?
-                    <SummaryInfos games={games} /> : null
+                !showSummary ?
+                    <div>
+                        <ul className="list-container">
+                            {games.map((game, index) => (
+                                <li key={game.home + game.away}>
+                                    <SummaryItem selectGame={selectGame} index={index} game={game} />
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    :
+                    <SummaryInfos games={games} />
             }
         </div >
     );

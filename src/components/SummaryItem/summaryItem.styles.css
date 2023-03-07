@@ -5,13 +5,12 @@
     align-items: center;
 }
 
-.summary-item-container .titles-container {
+.summary-item-container .teams-container {
     display: flex;
     align-items: center;
     width: 100%;
-    justify-content: space-evenly;
 }
 
-.summary-item-container .titles-container h4{
-    margin: 0
+.summary-item-container .teams-container h4{
+    margin: 0 7px;
 }

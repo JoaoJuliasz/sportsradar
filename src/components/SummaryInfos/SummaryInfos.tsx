@@ -23,7 +23,7 @@ const SummaryInfos = ({ games }: Props) => {
 
     return (
         <div className="summary-infos-container">
-            <Heading text="Summary"/>
+            <h4>Summary</h4>
             <ul className="list-item">
                 {[...games].sort(sortGames).map((game) => (
                     <li key={game.home + game.away}>

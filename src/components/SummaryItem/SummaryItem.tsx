@@ -18,12 +18,12 @@ const SummaryItem = ({ game, index, selectGame }: Props) => {
 
     return (
         <div data-testid="game-container" className="summary-item-container">
-            <div className="titles-container">
+            <div className="teams-container">
                 <h4>{game.home}</h4>
                 <span>x</span>
                 <h4>{game.away}</h4>
+                <ActionButton clickFunction={handleClick} text="actions" />
             </div>
-            <ActionButton clickFunction={handleClick} text="actions" />
         </div >
     );
 };

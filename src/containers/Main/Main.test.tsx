@@ -1,5 +1,4 @@
 import { screen, render } from '@testing-library/react'
-import user from '@testing-library/user-event'
 import Main from './Main'
 
 describe('Main', () => {

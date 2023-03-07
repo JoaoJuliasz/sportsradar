@@ -3,3 +3,7 @@
     color: rgb(78, 125, 209);
     font-size: 14px;
 }
+
+.action-btn:hover {
+    color: rgb(117, 161, 237);
+}
